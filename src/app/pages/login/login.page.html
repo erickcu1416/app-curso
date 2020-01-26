@@ -1,0 +1,62 @@
+<ion-content color="primary">
+  <ion-grid class="mt-center">
+    <ion-row>
+      <ion-col offset="3" size="6">
+        <ion-img src="/assets/icon/car2go.png"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <form [formGroup]="loginForm">
+    <ion-grid class="mt-normal">
+      <ion-row>
+        <ion-col offset="1" size="10">
+          <ion-item>
+            <ion-input formControlName="email" color="light" clearInput="true" placeholder="Correo Electronico" class="ph-light" type="email" inputmode="email"></ion-input>
+          </ion-item>
+          
+            <ng-container *ngFor="let e of error_messages.email">
+              <ion-item *ngIf="loginForm.get('email').hasError(e.type) && (loginForm.get('email').dirty ||loginForm.get('email').touched)">
+                <ion-text color="danger" class="form-error">
+                  Please enter a valid email address.
+                </ion-text>
+              </ion-item>
+            </ng-container>
+          
+          
+          
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col offset="1" size="10">
+          <ion-item>
+            <ion-input placeholder="Contraseña" clearInput="true" type="password" color="light"></ion-input>
+          </ion-item>
+          <!-- <ion-item color="primary" lines="none">
+            <ion-text color="danger" class="form-error">
+              Please enter a valid email address.
+            </ion-text>
+          </ion-item> -->
+        </ion-col>
+      </ion-row>
+  
+      <ion-row class="mt-small">
+        <ion-col offset="1" size="10">
+          <ion-button [disabled]="!loginForm.valid" (click)="tryLogin(loginForm.value)" color="light" expand="full">
+            <ion-text color="primary">
+              LOGIN
+            </ion-text>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row class="mt-normal">
+        <ion-col offset="1" size="10">
+          <ion-text color="light">
+            Si no dispones de una cuenta da click aquí
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
