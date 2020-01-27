@@ -1,3 +1,4 @@
+import { AuthService } from '../../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -30,7 +31,9 @@ export class RegisterPage implements OnInit {
     ]
   };
 
-  constructor(public formBuilder: FormBuilder, private router: Router) {
+  constructor(public formBuilder: FormBuilder,
+              private router: Router,
+              private _authService: AuthService) {
     this.registerForm = this.formBuilder.group(
       {
         password: new FormControl('', Validators.compose(
@@ -62,8 +65,9 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
-  tryLogin(value) {
+  tryRegister(value) {
     console.log(value);
+    this._authService.doRegister(value);
     this.router.navigateByUrl('home');
 
   }
