@@ -7,8 +7,22 @@
         </ion-row>
     </ion-grid>
 
-    <form [formGroup]="loginForm">
+    <form [formGroup]="registerForm">
         <ion-grid class="mt-normal">
+            <ion-row>
+                <ion-col offset="1" size="10">
+                    <ion-item>
+                        <ion-input formControlName="username" color="light" clearInput="true" placeholder="Nombre de Usuario" class="ph-light" type="username" inputmode="username"></ion-input>
+                    </ion-item>
+
+                    <ng-container *ngFor="let e of error_messages.username">
+                        <div class="error-messages" *ngIf="registerForm.get('username').hasError(e.type) && (registerForm.get('username').dirty || registerForm.get('username').touched)">
+                            {{ e.message }}
+                        </div>
+                    </ng-container>
+
+                </ion-col>
+            </ion-row>
             <ion-row>
                 <ion-col offset="1" size="10">
                     <ion-item>
@@ -16,7 +30,7 @@
                     </ion-item>
 
                     <ng-container *ngFor="let e of error_messages.email">
-                        <div class="error-messages" *ngIf="loginForm.get('email').hasError(e.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+                        <div class="error-messages" *ngIf="registerForm.get('email').hasError(e.type) && (registerForm.get('email').dirty || registerForm.get('email').touched)">
                             {{ e.message }}
                         </div>
                     </ng-container>
@@ -29,7 +43,7 @@
                         <ion-input formControlName="password" placeholder="Contraseña" clearInput="true" type="password" color="light"></ion-input>
                     </ion-item>
                     <ng-container *ngFor="let e of error_messages.password">
-                        <div class="error-messages" *ngIf="loginForm.get('password').hasError(e.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                        <div class="error-messages" *ngIf="registerForm.get('password').hasError(e.type) && (registerForm.get('password').dirty || registerForm.get('password').touched)">
                             {{ e.message }}
                         </div>
                     </ng-container>
@@ -39,9 +53,9 @@
 
             <ion-row class="mt-small">
                 <ion-col offset="1" size="10">
-                    <ion-button [disabled]="!loginForm.valid" (click)="tryLogin(loginForm.value)" color="light" expand="full">
+                    <ion-button [disabled]="!registerForm.valid" (click)="tryLogin(registerForm.value)" color="light" expand="full">
                         <ion-text color="primary">
-                            LOGIN
+                            REGISTRARME
                         </ion-text>
                     </ion-button>
                 </ion-col>
@@ -49,8 +63,8 @@
 
             <ion-row class="mt-normal">
                 <ion-col offset="1" size="10">
-                    <ion-text color="light" routerLink="/register">
-                        Si no dispones de una cuenta da click aquí
+                    <ion-text color="light" routerLink="/login">
+                        Si ya dispone de una cuenta da click aquí
                     </ion-text>
                 </ion-col>
             </ion-row>

@@ -1,0 +1,42 @@
+.logo {
+    width: 50%;
+    height: 50%;
+}
+
+.mt-center {
+    margin-top: 30%;
+}
+
+.mt-small {
+    margin-top: 3%;
+}
+
+.mt-normal {
+    margin-top: 6%;
+}
+
+ion-input,
+ion-item {
+    // border-radius: 2px !important;
+    // border: 1px solid #ffffff !important;
+    // --placeholder-color: red !important;
+    // --placeholder-opacity: red !important;
+    font-size: 19px !important;
+    --placeholder-font-weight: 50px !important;
+    --background: --ion-color-primary !important;
+    // --highlight-color-focused: #ffffff !important;
+    --border-color: #ffffff !important;
+    --highlight-color-invalid: yellow; // invalid underline color
+    --highlight-color-valid: #ffffff; // valid underline color
+}
+
+.error-messages {
+    font-size: 0.8em;
+    color: yellow;
+    text-align: center;
+    font-family: 'Source Code Pro';
+}
+
+ion-text {
+    font-family: 'Source Code Pro';
+}
