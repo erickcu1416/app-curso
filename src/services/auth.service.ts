@@ -11,13 +11,26 @@ export class AuthService {
   constructor(private afAuth: AngularFireAuth,
               private _userRepository: UserRepository) { }
 
-  doRegister(value: IUser) {
+  doRegister(user: IUser): Promise<IUser | any> {
     return new Promise((resolve, reject) => {
-      this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password).then(
+      this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password).then(
         async res => {
-          delete value.password;
-          this._userRepository.addUserFirestore(value);
-        }
+          console.log('RES ON SERVICE', res);
+          if (res.user) {
+            user._id = res.user.uid;
+            delete user.password;
+            const us = await this._userRepository.addUserFirestore(user);
+            if (us) {
+              console.log('USER COMPLETE', us);
+              resolve(us);
+            } else {
+              resolve(us);
+            }
+          }
+        },
+        err => resolve(err)
+      ).catch(
+        e => reject(e)
       );
     });
   }

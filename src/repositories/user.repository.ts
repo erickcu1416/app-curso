@@ -16,15 +16,16 @@ export class UserRepository {
         this.usersCollection = this.db.collection<IUser>(`${this.COLLECTION_END}`);
     }
 
-    async addUserFirestore(user: IUser): Promise<any> {
+    async addUserFirestore(user: IUser): Promise<IUser | any> {
         return new Promise(
             async (resolve, reject) => {
-            const id = this.db.createId();
-            user._id = id;
             console.log('Creando user desde repository', user);
+            const id = user._id.toString();
             await this.usersCollection.doc(id).set(user).then(
-                (a) => resolve(a),
-                err => reject(err)
+                () => resolve(user),
+                err => resolve(err)
+            ).catch(
+                e => reject(e)
             );
         });
     }

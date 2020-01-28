@@ -1,3 +1,4 @@
+import { MessagesController } from './../../../utils/controllers/messages.controller';
 import { AuthService } from '../../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
@@ -33,7 +34,8 @@ export class RegisterPage implements OnInit {
 
   constructor(public formBuilder: FormBuilder,
               private router: Router,
-              private _authService: AuthService) {
+              private _authService: AuthService,
+              private messagesCtrl: MessagesController) {
     this.registerForm = this.formBuilder.group(
       {
         password: new FormControl('', Validators.compose(
@@ -65,10 +67,15 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
-  tryRegister(value) {
+  async tryRegister(value) {
     console.log(value);
-    this._authService.doRegister(value);
-    this.router.navigateByUrl('home');
-
+    this.messagesCtrl.presentLoader('Creando usuario...');
+    const res = await this._authService.doRegister(value);
+    this.messagesCtrl.hideLoader();
+    if (res._id) {
+      this.router.navigateByUrl('home');
+    } else if (res.code) {
+      this.messagesCtrl.presentAlertOk('', res.message);
+    }
   }
 }
