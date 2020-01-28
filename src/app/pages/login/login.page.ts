@@ -1,5 +1,8 @@
+import { MessagesController } from './../../../utils/controllers/messages.controller';
+import { AuthService } from './../../../services/auth.service';
 import { Component, OnInit, Output } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +27,10 @@ export class LoginPage implements OnInit {
     ]
   };
 
-  constructor(public formBuilder: FormBuilder) {
+  constructor(public formBuilder: FormBuilder,
+              private _authService: AuthService,
+              private messagesCtrl: MessagesController,
+              private router: Router) {
     this.loginForm = this.formBuilder.group(
       {
         password: new FormControl('', Validators.compose(
@@ -50,8 +56,16 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  tryLogin(value) {
+  async tryLogin(value) {
     console.log(value);
+    this.messagesCtrl.presentLoader('Verificando usuario...');
+    const res = await this._authService.doLogin(value);
+    await this.messagesCtrl.hideLoader();
+    if (res._id) {
+      this.router.navigateByUrl('/home');
+    } else if (res.code) {
+      this.messagesCtrl.presentAlertOk('Ops!', res.message);
+    }
   }
 
 }

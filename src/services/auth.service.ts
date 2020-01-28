@@ -34,4 +34,23 @@ export class AuthService {
       );
     });
   }
+
+  doLogin(user: IUser): Promise<IUser | any> {
+    return new Promise((resolve, reject) => {
+      this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password).then(
+        async res => {
+          console.log('RES', res);
+          user._id = res.user.uid;
+          delete user.password;
+          resolve(user);
+        },
+        err => {
+          console.log('ERRPR', err);
+          resolve(err)
+        }
+      ).catch(
+        e => reject(e)
+      );
+    });
+  }
 }
