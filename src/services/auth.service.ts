@@ -46,7 +46,7 @@ export class AuthService {
         },
         err => {
           console.log('ERRPR', err);
-          resolve(err)
+          resolve(err);
         }
       ).catch(
         e => reject(e)
