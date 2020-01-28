@@ -1,6 +1,7 @@
 import { IUser } from './../utils/models/user.interface';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -14,6 +15,10 @@ export class UserRepository {
     constructor(private db: AngularFirestore) {
         console.log('User Repository Ready');
         this.usersCollection = this.db.collection<IUser>(`${this.COLLECTION_END}`);
+    }
+
+    getUserById(id): Observable<IUser> {
+        return this.db.doc<IUser>(`${this.COLLECTION_END}/${id}`).valueChanges();
     }
 
     async addUserFirestore(user: IUser): Promise<IUser | any> {

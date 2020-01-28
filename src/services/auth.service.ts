@@ -2,6 +2,7 @@ import { UserRepository } from './../repositories/user.repository';
 import { IUser } from './../utils/models/user.interface';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Subscription, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,46 @@ export class AuthService {
         }
       ).catch(
         e => reject(e)
+      );
+    });
+  }
+
+  async getUser(): Promise<IUser> {
+    return new Promise((resolve, reject) => {
+      let user: IUser;
+      let _userListener: Subscription = new Subscription();
+      let _userRepositoyListener: Subscription = new Subscription();
+
+      _userListener = this.afAuth.user.subscribe(
+        data => {
+          if (data.uid) {
+            _userRepositoyListener = this._userRepository.getUserById(data.uid).subscribe(
+              us => {
+                if (us) {
+                  user = us;
+                  resolve(user);
+                  _userRepositoyListener.unsubscribe();
+                  _userListener.unsubscribe();
+                } else {
+                  resolve({
+                    _id: null
+                  });
+                }
+              }
+            );
+          }
+        }
+      );
+    });
+  }
+
+  doSignOut() {
+    return new Promise((resolve, reject) => {
+      this.afAuth.auth.signOut().then(
+        () => resolve(true),
+        (err) => resolve(true),
+      ).catch(
+        () => reject(false)
       );
     });
   }

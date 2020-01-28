@@ -1,10 +1,17 @@
 <ion-header>
     <ion-toolbar color="primary">
         <ion-title>TrackerBus</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="tryLogOut()">
+                <ion-icon slot="icon-only" name="log-out"></ion-icon>
+            </ion-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 <ion-content color="light">
-    <ion-text class="ion-text-center">
-        Bienvenido
-    </ion-text>
+    <div *ngIf="!loader" class="ion-text-center">
+        <ion-text>
+            Bienvenido {{ user.username }}
+        </ion-text>
+    </div>
 </ion-content>
