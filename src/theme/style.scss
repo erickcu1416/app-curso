@@ -25,20 +25,30 @@ ion-item {
     --placeholder-font-weight: 50px !important;
     --background: --ion-color-primary !important;
     // --highlight-color-focused: #ffffff !important;
-    --border-color: #ffffff !important;
-    --highlight-color-invalid: yellow; // invalid underline color
-    --highlight-color-valid: #ffffff; // valid underline color
+    --border-color: #304ffe !important;
+    --highlight-color-invalid: red; // invalid underline color
+    --highlight-color-valid: #304ffe; // valid underline color
 }
 
 .error-messages {
     font-size: 0.8em;
-    color: yellow;
+    color: red;
     text-align: center;
     font-family: 'Source Code Pro';
 }
 
 ion-text {
     font-family: 'Source Code Pro';
+}
+
+.hd-text-title {
+    font-family: 'Dancing Script' !important;
+    font-size: 5.0em;
+}
+
+.hd-text-subtitle {
+    margin-top: -1% !important;
+    font-size: 1.8em;
 }
 
 .custom-loader-class {

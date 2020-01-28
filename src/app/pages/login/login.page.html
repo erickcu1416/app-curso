@@ -1,8 +1,14 @@
 <ion-content color="primary">
     <ion-grid class="mt-center">
         <ion-row>
-            <ion-col offset="3" size="6">
-                <ion-img src="/assets/icon/car2go.png"></ion-img>
+            <ion-col offset="1" size="10">
+                <!-- <ion-img src="/assets/icon/car2go.png"></ion-img> -->
+                <div class="hd-text-title ion-text-center">
+                    Dreaming
+                </div>
+                <div class="hd-text-subtitle ion-text-center">
+                    FLOWERS
+                </div>
             </ion-col>
         </ion-row>
     </ion-grid>
@@ -12,7 +18,7 @@
             <ion-row>
                 <ion-col offset="1" size="10">
                     <ion-item>
-                        <ion-input formControlName="email" color="light" clearInput="true" placeholder="Correo Electronico" class="ph-light" type="email" inputmode="email"></ion-input>
+                        <ion-input formControlName="email" color="dark" clearInput="true" placeholder="Correo Electronico" class="ph-light" type="email" inputmode="email"></ion-input>
                     </ion-item>
 
                     <ng-container *ngFor="let e of error_messages.email">
@@ -26,7 +32,7 @@
             <ion-row>
                 <ion-col offset="1" size="10">
                     <ion-item>
-                        <ion-input formControlName="password" placeholder="Contraseña" clearInput="true" type="password" color="light"></ion-input>
+                        <ion-input formControlName="password" placeholder="Contraseña" clearInput="true" type="password" color="dark"></ion-input>
                     </ion-item>
                     <ng-container *ngFor="let e of error_messages.password">
                         <div class="error-messages" *ngIf="loginForm.get('password').hasError(e.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
@@ -39,8 +45,8 @@
 
             <ion-row class="mt-small">
                 <ion-col offset="1" size="10">
-                    <ion-button [disabled]="!loginForm.valid" (click)="tryLogin(loginForm.value)" color="light" expand="full">
-                        <ion-text color="primary">
+                    <ion-button [disabled]="!loginForm.valid" (click)="tryLogin(loginForm.value)" color="secondary" expand="full">
+                        <ion-text color="light">
                             LOGIN
                         </ion-text>
                     </ion-button>
@@ -49,7 +55,7 @@
 
             <ion-row class="mt-normal">
                 <ion-col offset="1" size="10">
-                    <ion-text color="light" routerLink="/register">
+                    <ion-text color="dark" routerLink="/register">
                         Si no dispones de una cuenta da click aquí
                     </ion-text>
                 </ion-col>

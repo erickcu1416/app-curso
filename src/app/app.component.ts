@@ -21,7 +21,7 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.overlaysWebView(true);
-      this.statusBar.backgroundColorByHexString('#003c8f');
+      this.statusBar.backgroundColorByHexString('#c7b800');
       this.statusBar.styleLightContent();
 
       this.splashScreen.hide();
