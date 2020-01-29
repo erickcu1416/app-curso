@@ -12,7 +12,7 @@
 }
 
 .mt-large-border {
-    margin-top: -12%;
+    margin-top: -8%!important;
 }
 
 .mt-small {
@@ -29,7 +29,7 @@ ion-item {
     // border: 1px solid #ffffff !important;
     // --placeholder-color: red !important;
     // --placeholder-opacity: red !important;
-    font-size: 19px !important;
+    // font-size: 19px !important;
     --placeholder-font-weight: 50px !important;
     --background: --ion-color-primary !important;
     // --highlight-color-focused: #ffffff !important;
@@ -63,11 +63,97 @@ ion-text {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    width: 90%;
 }
 
 .custom-loader-class {
     // --background: transparent;
 }
-ion-card{
-    --background: #F4F5F8 !important;
+
+ion-card {
+    --background: #ffffff !important;
+}
+
+.shadow-red {
+    --border-radius: 50%;
+    --box-shadow: 0px 14px 25px rgba(182, 30, 30, 0.59);
+}
+
+.bg-white {
+    background-color: #FAFAFA;
+}
+
+.bg-primary {
+    background-color: var(--ion-color-primary)
+}
+
+.bg-secondary {
+    background-color: var(--ion-color-secondary)
+}
+
+.border-bottom {
+    border-bottom: 1px solid #CECECE !important;
+}
+
+.font-title-card {
+    font-size: 18px !important;
+    font-weight: bold;
+    color: black;
+}
+
+.title-card-prom {
+    font-size: 16px !important;
+    color: black;
+}
+
+.img-card-prom {
+    width: 82% !important;
+}
+
+.price-card-prom {
+    margin-top: 4px;
+    font-size: 16px !important;
+    font-weight: bold;
+    color: black;
+}
+
+.ion-activatable {
+    position: relative;
+    overflow: hidden;
+}
+
+.sh-more {
+    margin-top: 4px;
+    font-size: 14px !important;
+    color: var(--ion-color-secondary);
+}
+
+.mt-card-prom {
+    margin-top: 4px;
+    font-size: 12px !important;
+    color: var(--ion-color-success);
+}
+
+.bg-primary {
+    background-color: var(--ion-color-primary);
+    // background: -moz-linear-gradient(top, #fefcea 0%, #f1da36 100%) !important;
+    /* FF3.6-15 */
+}
+
+.bg-header {
+    background: linear-gradient(#FEDD16, #f4f5f8) // background-color: linear-gradient(top, #fefcea 0%, #f1da36 100%) !important;
+}
+
+.subtitle-header {
+    font-size: 11px !important;
+}
+
+.main-img {
+    background-size: cover !important;
+    position: relative !important;
+    flex-flow: row !important;
+    width: 50% !important;
+    height: 50% !important;
+    display: block !important;
+    margin: auto;
 }

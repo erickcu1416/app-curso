@@ -1,4 +1,4 @@
-<ion-header translucent>
+<ion-header no-border color="primary" translucent>
     <ion-toolbar color="primary">
         <ion-buttons slot="start">
             <ion-button>
@@ -6,42 +6,175 @@
             </ion-button>
         </ion-buttons>
         <ion-buttons slot="end">
-            <ion-button (click)="tryLogOut()">
+            <ion-button shape="round" (click)="tryLogOut()">
                 <ion-icon slot="icon-only" name="log-out"></ion-icon>
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
+    <ion-grid *ngIf="!loader" class="bg-primary">
+        <ion-row>
+            <ion-col offset="1" class="subtitle-header" size="10">
+                <ion-text color="dark">
+                    Bienvenido {{ user.username }}
+                </ion-text>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-header>
-<ion-content color="light" fullscreen>
-    <!-- <div *ngIf="!loader" class="ion-text-center">
-        <ion-text>
-            Bienvenido {{ user.username }}
-        </ion-text>
-    </div> -->
+<ion-content color="light" class="bg-class" fullscreen>
 
-    <ion-slides class="mt-small-border" [options]="slideOpts">
-        <ion-slide *ngFor="let item of [1,1,1,1,1,1,1,1,1,1]" >        
-            <ion-card  class="center-card" mode="ios">
-                <img src="/assets/shapes.svg" />
-            </ion-card>
-        </ion-slide>
-    </ion-slides>
-    <br>
-    <br>
+    <div class="bg-header">
+        <ion-slides class="mt-small-border" [options]="slideOpts">
+            <ion-slide *ngFor="let item of [1,1,1,1,1,1,1,1,1,1]">
+                <ion-card class="center-card" mode="ios">
+                    <div class="ion-activatable">
+                        <img src="/assets/shapes.svg" />
+                        <ion-ripple-effect></ion-ripple-effect>
+                    </div>
+                </ion-card>
+            </ion-slide>
+        </ion-slides>
+    </div>
 
-    <ion-row>
-        <ion-col *ngFor="let item of [1,1,1,1,1,1,1]"  size="6">
-            <ion-card class="mt-large-border" mode="ios">
-                <img src="/assets/shapes.svg" />
-                <ion-card-header>
-                    <ion-card-title>Awesome Title</ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                    Awesome content
-                </ion-card-content>
-            </ion-card>
-        </ion-col>
-    </ion-row>
+    <ion-grid class="ion-no-padding">
+        <ion-row class="mt-large-border">
+            <ion-col size="12">
+                <ion-card class="bg-white" mode="ios">
+                    <ion-card-header class="border-bottom">
+                        <ion-card-subtitle>
+                            <ion-label class="font-title-card">
+                                <b>
+                                    El más vendido
+                                </b>
+                            </ion-label>
+                        </ion-card-subtitle>
+                    </ion-card-header>
+                    <div class="ion-activatable">
+                        <div class="bg-white">
+                            <img class="main-img" src="https://www.stickpng.com/assets/images/580b585b2edbce24c47b268e.png" />
+                        </div>
+                        <ion-card-content class="border-bottom">
+                            <ion-col offset="1" size="10">
 
+                                <div class="title-card-prom">
+                                    Ramo de rosas
+                                </div>
+                                <div class="price-card-prom">
+                                    $1120
+                                </div>
+                                <div class="mt-card-prom">
+                                    Envío gratis
+                                </div>
+
+                            </ion-col>
+                        </ion-card-content>
+
+                        <ion-ripple-effect></ion-ripple-effect>
+
+                    </div>
+
+                    <ion-item detail="false" button lines="none">
+                        <div class="sh-more">
+                            Ver más
+                        </div>
+                        <ion-icon slot="end" mode="ios" color="secondary" name="arrow-forward"></ion-icon>
+                    </ion-item>
+
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+
+    <ion-grid class="ion-no-padding">
+        <ion-row class="mt-large-border">
+            <ion-col size="12">
+                <ion-card class="bg-white" mode="ios">
+                    <ion-card-header class="border-bottom">
+                        <ion-card-subtitle>
+                            <ion-label class="font-title-card">
+                                <b>
+                                    Individuales
+                                </b>
+                            </ion-label>
+                        </ion-card-subtitle>
+
+                    </ion-card-header>
+                    <ion-card-content class="ion-no-padding bg-white">
+                        <ion-item *ngFor="let item of [1,1,1,1,1]" class="border-bottom" button lines="none">
+                            <ion-row>
+                                <ion-col size="4">
+                                    <img class="img-card-prom" src="/assets/icon/car2go.png" alt="">
+                                </ion-col>
+                                <ion-col size="8">
+                                    <div class="title-card-prom">
+                                        Flor Amapola
+                                    </div>
+                                    <div class="price-card-prom">
+                                        $892
+                                    </div>
+                                    <div class="mt-card-prom">
+                                        Envío gratis
+                                    </div>
+
+                                </ion-col>
+                            </ion-row>
+                        </ion-item>
+                    </ion-card-content>
+                    <ion-item detail="false" button lines="none">
+                        <div class="sh-more">
+                            Ver más
+                        </div>
+                        <ion-icon slot="end" mode="ios" color="secondary" name="arrow-forward"></ion-icon>
+                    </ion-item>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-grid class="ion-no-padding">
+        <ion-row class="mt-large-border">
+            <ion-col size="12">
+                <ion-card class="bg-white" mode="ios">
+                    <ion-card-header class="border-bottom">
+                        <ion-card-subtitle>
+                            <ion-label class="font-title-card">
+                                <b>
+                                    Ramos Completos
+                                </b>
+                            </ion-label>
+                        </ion-card-subtitle>
+
+                    </ion-card-header>
+                    <ion-card-content class="ion-no-padding bg-white">
+                        <ion-item *ngFor="let item of [1,1,1,1,1,1]" class="border-bottom" button lines="none">
+                            <ion-row>
+                                <ion-col size="4">
+                                    <img class="img-card-prom" src="https://www.coronasdefloresparadifuntos.com/195-large_default/ramo-flores-mr5.jpg" alt="">
+                                </ion-col>
+                                <ion-col size="8">
+                                    <div class="title-card-prom">
+                                        Ramo de rosas
+                                    </div>
+                                    <div class="price-card-prom">
+                                        $2598
+                                    </div>
+                                    <div class="mt-card-prom">
+                                        Entrega inmediata
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-item>
+                    </ion-card-content>
+                    <ion-item detail="false" button lines="none">
+                        <div class="sh-more">
+                            Ver más
+                        </div>
+                        <ion-icon slot="end" mode="ios" color="secondary" name="arrow-forward"></ion-icon>
+                    </ion-item>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
 </ion-content>
