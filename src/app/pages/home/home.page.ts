@@ -1,8 +1,11 @@
+import { FlowerService } from './../../../services/flower.service';
+import { IFlower } from './../../../utils/models/flower.interface';
 import { MessagesController } from './../../../utils/controllers/messages.controller';
 import { IUser } from './../../../utils/models/user.interface';
 import { AuthService } from './../../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +15,12 @@ import { Router } from '@angular/router';
 export class HomePage implements OnInit {
   user: IUser;
   loader = true;
+  flowers: Observable<IFlower[]>;
 
   constructor(private _authService: AuthService,
               private router: Router,
-              private menssagesCtrl: MessagesController) {
+              private menssagesCtrl: MessagesController,
+              private _flowerService: FlowerService) {
   }
 
   slideOpts = {
@@ -24,6 +29,7 @@ export class HomePage implements OnInit {
   };
 
   async ngOnInit() {
+    this.getFlowers();
     this.user = await this._authService.getUser();
     this.loader = false;
   }
@@ -35,5 +41,9 @@ export class HomePage implements OnInit {
     if (res) {
       this.router.navigateByUrl('/login');
     }
+  }
+
+  getFlowers() {
+    this.flowers = this._flowerService.getFlowers();
   }
 }

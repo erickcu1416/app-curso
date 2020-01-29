@@ -1,0 +1,71 @@
+[{
+        "id": 1,
+        "name": "Rosa",
+        "price": 15,
+        "category": "only",
+        "urlImage": "assets/imgs/rosa.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Ramo de rosas",
+        "price": 356,
+        "category": "bouquets",
+        "urlImage": "assets/imgs/ramo-de-rosas.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Girasol",
+        "price": 20,
+        "category": "only",
+        "urlImage": "assets/imgs/girasol.png"
+    },
+    {
+        "id": 4,
+        "name": "Ramo de girasoles",
+        "price": 260,
+        "category": "bouquets",
+        "urlImage": "assets/imgs/ramo-de-girasoles.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Hortensia",
+        "price": 18,
+        "category": "only",
+        "urlImage": "assets/imgs/hortensias.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Ramo de Hortensias",
+        "price": 203,
+        "category": "bouquets",
+        "urlImage": "assets/imgs/ramo-de-hortensias.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Tulipan",
+        "price": 56,
+        "category": "only",
+        "urlImage": "assets/imgs/tulipan.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Ramo de Tulipanes",
+        "price": 190,
+        "category": "bouquets",
+        "urlImage": "assets/imgs/ramo-de-tulipanes.jpg"
+    },
+    {
+        "id": 9,
+        "name": "Dalia",
+        "price": 43,
+        "category": "only",
+        "urlImage": "assets/imgs/dalia.jpg"
+    },
+    {
+        "id": 10,
+        "name": "Ramo de Dalias",
+        "price": 520,
+        "category": "bouquets",
+        "urlImage": "assets/imgs/ramo-de-dalias.jpg"
+    }
+]

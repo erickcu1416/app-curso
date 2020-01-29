@@ -101,25 +101,27 @@
 
                     </ion-card-header>
                     <ion-card-content class="ion-no-padding bg-white">
-                        <ion-item *ngFor="let item of [1,1,1,1,1]" class="border-bottom" button lines="none">
-                            <ion-row>
-                                <ion-col size="4">
-                                    <img class="img-card-prom" src="/assets/icon/car2go.png" alt="">
-                                </ion-col>
-                                <ion-col size="8">
-                                    <div class="title-card-prom">
-                                        Flor Amapola
-                                    </div>
-                                    <div class="price-card-prom">
-                                        $892
-                                    </div>
-                                    <div class="mt-card-prom">
-                                        Envío gratis
-                                    </div>
+                        <div *ngFor="let flower of flowers | async">
+                            <ion-item *ngIf="flower.category === 'only'" class="border-bottom" button lines="none">
+                                <ion-row>
+                                    <ion-col size="4">
+                                        <img class="img-card-prom" [src]="flower.urlImage" alt="">
+                                    </ion-col>
+                                    <ion-col size="8">
+                                        <div class="title-card-prom">
+                                            {{ flower.name }}
+                                        </div>
+                                        <div class="price-card-prom">
+                                            ${{ flower.price }}
+                                        </div>
+                                        <div class="mt-card-prom">
+                                            Envío gratis
+                                        </div>
 
-                                </ion-col>
-                            </ion-row>
-                        </ion-item>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-item>
+                        </div>
                     </ion-card-content>
                     <ion-item detail="false" button lines="none">
                         <div class="sh-more">
@@ -147,24 +149,26 @@
 
                     </ion-card-header>
                     <ion-card-content class="ion-no-padding bg-white">
-                        <ion-item *ngFor="let item of [1,1,1,1,1,1]" class="border-bottom" button lines="none">
-                            <ion-row>
-                                <ion-col size="4">
-                                    <img class="img-card-prom" src="https://www.coronasdefloresparadifuntos.com/195-large_default/ramo-flores-mr5.jpg" alt="">
-                                </ion-col>
-                                <ion-col size="8">
-                                    <div class="title-card-prom">
-                                        Ramo de rosas
-                                    </div>
-                                    <div class="price-card-prom">
-                                        $2598
-                                    </div>
-                                    <div class="mt-card-prom">
-                                        Entrega inmediata
-                                    </div>
-                                </ion-col>
-                            </ion-row>
-                        </ion-item>
+                        <div *ngFor="let flower of flowers | async">
+                            <ion-item *ngIf="flower.category === 'bouquets'" class="border-bottom" button lines="none">
+                                <ion-row>
+                                    <ion-col size="4">
+                                        <img class="img-card-prom" [src]="flower.urlImage" alt="">
+                                    </ion-col>
+                                    <ion-col size="8">
+                                        <div class="title-card-prom">
+                                            {{ flower.name }}
+                                        </div>
+                                        <div class="price-card-prom">
+                                            ${{ flower.price }}
+                                        </div>
+                                        <div class="mt-card-prom">
+                                            Entrega inmediata
+                                        </div>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-item>
+                        </div>
                     </ion-card-content>
                     <ion-item detail="false" button lines="none">
                         <div class="sh-more">
