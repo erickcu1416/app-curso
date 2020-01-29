@@ -63,7 +63,7 @@ export class AuthService {
 
       _userListener = this.afAuth.user.subscribe(
         data => {
-          if (data.uid) {
+          if (data) {
             _userRepositoyListener = this._userRepository.getUserById(data.uid).subscribe(
               us => {
                 if (us) {
@@ -78,6 +78,10 @@ export class AuthService {
                 }
               }
             );
+          } else {
+            resolve({
+              _id: null
+            });
           }
         }
       );

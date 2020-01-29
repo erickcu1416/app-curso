@@ -1,5 +1,10 @@
-<ion-header>
+<ion-header translucent>
     <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-button>
+                <ion-icon slot="icon-only" name="menu"></ion-icon>
+            </ion-button>
+        </ion-buttons>
         <ion-buttons slot="end">
             <ion-button (click)="tryLogOut()">
                 <ion-icon slot="icon-only" name="log-out"></ion-icon>
@@ -7,10 +12,36 @@
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
-<ion-content color="light">
-    <div *ngIf="!loader" class="ion-text-center">
+<ion-content color="light" fullscreen>
+    <!-- <div *ngIf="!loader" class="ion-text-center">
         <ion-text>
             Bienvenido {{ user.username }}
         </ion-text>
-    </div>
+    </div> -->
+
+    <ion-slides class="mt-small-border" [options]="slideOpts">
+        <ion-slide *ngFor="let item of [1,1,1,1,1,1,1,1,1,1]" >        
+            <ion-card  class="center-card" mode="ios">
+                <img src="/assets/shapes.svg" />
+            </ion-card>
+        </ion-slide>
+    </ion-slides>
+    <br>
+    <br>
+
+    <ion-row>
+        <ion-col *ngFor="let item of [1,1,1,1,1,1,1]"  size="6">
+            <ion-card class="mt-large-border" mode="ios">
+                <img src="/assets/shapes.svg" />
+                <ion-card-header>
+                    <ion-card-title>Awesome Title</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    Awesome content
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+
+
 </ion-content>

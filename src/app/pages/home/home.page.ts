@@ -18,14 +18,19 @@ export class HomePage implements OnInit {
               private menssagesCtrl: MessagesController) {
   }
 
+  slideOpts = {
+    initialSlide: 1,
+    speed: 400
+  };
+
   async ngOnInit() {
     this.user = await this._authService.getUser();
     this.loader = false;
   }
 
-  tryLogOut() {
+  async tryLogOut() {
     this.menssagesCtrl.presentLoader('Cerando sesión...');
-    const res = this._authService.doSignOut();
+    const res = await this._authService.doSignOut();
     this.menssagesCtrl.hideLoader();
     if (res) {
       this.router.navigateByUrl('/login');
