@@ -1,0 +1,101 @@
+<ion-menu side="start" menuId="mainMenu" contentId="main">
+    <ion-content color="light" class="bg-class" fullscreen>
+        <ion-grid class="bg-header">
+            <ion-row>
+                <ion-col offset="1" size="10">
+                    <!-- <ion-img src="/assets/icon/car2go.png"></ion-img> -->
+                    <div class="menu-text-title ion-text-center">
+                        Dreaming
+                    </div>
+                    <div class="menu-text-subtitle ion-text-center">
+                        FLOWERS
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-grid class="border-bottom">
+            <div routerLinkActive="activo" class="ion-activatable">
+                <ion-row routerLink="/">
+                    <ion-col size="2">
+                        <ion-icon class="icons-menu" name="home"></ion-icon>
+                    </ion-col>
+                    <ion-col size="9">
+                        <ion-text>
+                            Inicio
+                        </ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-ripple-effect></ion-ripple-effect>
+            </div>
+
+            <br>
+            <div routerLinkActive="activo" class="ion-activatable">
+                <ion-row routerLink="/login">
+                    <ion-col size="2">
+                        <ion-icon class="icons-menu" name="list"></ion-icon>
+                    </ion-col>
+                    <ion-col size="9">
+                        <ion-text color="dark">
+                            Mis compras
+                        </ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-ripple-effect></ion-ripple-effect>
+            </div>
+            <br>
+
+            <div class="ion-activatable">
+                <ion-row>
+                    <ion-col size="2">
+                        <ion-icon class="icons-menu" name="cart"></ion-icon>
+                    </ion-col>
+                    <ion-col size="9">
+                        <ion-text color="dark">
+                            Ver carrito
+                        </ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-ripple-effect></ion-ripple-effect>
+            </div>
+            <br>
+        </ion-grid>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-text color="dark">
+                        Usuario
+                    </ion-text>
+                </ion-col>
+            </ion-row>
+            <br>
+            <div class="ion-activatable">
+                <ion-row>
+                    <ion-col size="2">
+                        <ion-icon class="icons-menu" name="clipboard"></ion-icon>
+                    </ion-col>
+                    <ion-col size="9">
+                        <ion-text color="dark">
+                            Mi dirección
+                        </ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-ripple-effect></ion-ripple-effect>
+            </div>
+
+            <br>
+            <div (click)="tryLogOut()" class="ion-activatable">
+                <ion-row>
+                    <ion-col size="2">
+                        <ion-icon class="icons-menu" name="log-out"></ion-icon>
+                    </ion-col>
+                    <ion-col size="9">
+                        <ion-text color="dark">
+                            Cerrar sesión
+                        </ion-text>
+                    </ion-col>
+                </ion-row>
+                <ion-ripple-effect></ion-ripple-effect>
+            </div>
+        </ion-grid>
+    </ion-content>
+</ion-menu>

@@ -3,6 +3,7 @@ import { AuthService } from '../../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -35,7 +36,8 @@ export class RegisterPage implements OnInit {
   constructor(public formBuilder: FormBuilder,
               private router: Router,
               private _authService: AuthService,
-              private messagesCtrl: MessagesController) {
+              private messagesCtrl: MessagesController,
+              private menuCtrl: MenuController) {
     this.registerForm = this.formBuilder.group(
       {
         password: new FormControl('', Validators.compose(
@@ -77,5 +79,9 @@ export class RegisterPage implements OnInit {
     } else if (res.code) {
       this.messagesCtrl.presentAlertOk('', res.message);
     }
+  }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
   }
 }

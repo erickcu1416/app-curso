@@ -1,13 +1,15 @@
 <ion-header no-border color="primary" translucent>
     <ion-toolbar color="primary">
         <ion-buttons slot="start">
-            <ion-button>
-                <ion-icon slot="icon-only" name="menu"></ion-icon>
-            </ion-button>
+            <ion-menu-button color="dark" menu="mainMenu"></ion-menu-button>
         </ion-buttons>
         <ion-buttons slot="end">
-            <ion-button shape="round" (click)="tryLogOut()">
+            <!-- <ion-button shape="round" (click)="tryLogOut()">
                 <ion-icon slot="icon-only" name="log-out"></ion-icon>
+            </ion-button> -->
+            <ion-button shape="round">
+                <ion-icon class="cart-icon" name="cart"></ion-icon>
+                <ion-badge>4</ion-badge>
             </ion-button>
         </ion-buttons>
     </ion-toolbar>

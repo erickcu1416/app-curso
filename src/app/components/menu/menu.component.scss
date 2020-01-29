@@ -1,0 +1,20 @@
+.icons-menu {
+    font-size: 25px;
+}
+
+.activo {
+    background-color: rgb(230, 230, 230);
+}
+
+.activo ion-icon {
+    // border-bottom: 3px solid var(--ion-color-primary) !important;
+    // background: linear-gradient(rgb(209, 197, 131), #f4f5f8)
+    color: var(--ion-color-secondary);
+}
+
+.activo ion-text {
+    // background-color: #ccc;
+    // border-bottom: 3px solid var(--ion-color-primary) !important;
+    // background: linear-gradient(rgb(209, 197, 131), #f4f5f8)
+    color: var(--ion-color-secondary);
+}

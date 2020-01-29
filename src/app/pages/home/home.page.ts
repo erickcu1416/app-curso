@@ -6,6 +6,7 @@ import { AuthService } from './../../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,8 @@ export class HomePage implements OnInit {
   constructor(private _authService: AuthService,
               private router: Router,
               private menssagesCtrl: MessagesController,
-              private _flowerService: FlowerService) {
+              private _flowerService: FlowerService,
+              private menuCtrl: MenuController) {
   }
 
   slideOpts = {
@@ -37,13 +39,19 @@ export class HomePage implements OnInit {
   async tryLogOut() {
     this.menssagesCtrl.presentLoader('Cerando sesión...');
     const res = await this._authService.doSignOut();
-    this.menssagesCtrl.hideLoader();
-    if (res) {
-      this.router.navigateByUrl('/login');
-    }
+    setTimeout(() => {
+      this.menssagesCtrl.hideLoader();
+      if (res) {
+        this.router.navigateByUrl('/login');
+      }
+    }, 1000);
   }
 
   getFlowers() {
     this.flowers = this._flowerService.getFlowers();
+  }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(true);
   }
 }

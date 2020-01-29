@@ -1,3 +1,4 @@
+import { MenuComponent } from './components/menu/menu.component';
 import { environment } from './../environments/environment';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,7 +21,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    MenuComponent,
+  ],
+  exports: [
+    MenuComponent,
+  ],
   entryComponents: [],
   imports: [
     BrowserModule,
