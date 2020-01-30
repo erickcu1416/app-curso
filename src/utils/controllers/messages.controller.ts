@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AlertController, ToastController, LoadingController  } from '@ionic/angular';
+import { AlertController, ToastController, LoadingController, ActionSheetController  } from '@ionic/angular';
 
 
 @Injectable({
@@ -7,7 +7,10 @@ import { AlertController, ToastController, LoadingController  } from '@ionic/ang
 })
 export class MessagesController {
   loading: any;
-  constructor(private alertCtrl: AlertController, private toastCtrl: ToastController, private loadingCtrl: LoadingController) { }
+  constructor(private alertCtrl: AlertController,
+              private toastCtrl: ToastController,
+              private loadingCtrl: LoadingController,
+              private actionSheetController: ActionSheetController) { }
 
   async presentAlertOk(title = '', message = '', ok = 'Ok') {
     const alert = await this.alertCtrl.create({
@@ -143,4 +146,27 @@ export class MessagesController {
       }
     });
   }
+
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Flor',
+      buttons: [{
+        text: 'Delete',
+        role: 'destructive',
+        icon: 'trash',
+        handler: () => {
+          console.log('Delete clicked');
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
+  }
+
 }

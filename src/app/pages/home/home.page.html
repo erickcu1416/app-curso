@@ -7,7 +7,7 @@
             <!-- <ion-button shape="round" (click)="tryLogOut()">
                 <ion-icon slot="icon-only" name="log-out"></ion-icon>
             </ion-button> -->
-            <ion-button shape="round">
+            <ion-button routerLink="/cart" shape="round">
                 <ion-icon class="cart-icon" name="cart"></ion-icon>
                 <ion-badge>4</ion-badge>
             </ion-button>
@@ -51,7 +51,7 @@
                             </ion-label>
                         </ion-card-subtitle>
                     </ion-card-header>
-                    <div class="ion-activatable">
+                    <div (click)="openProduct()" class="ion-activatable">
                         <div class="bg-white">
                             <img class="main-img" src="https://www.stickpng.com/assets/images/580b585b2edbce24c47b268e.png" />
                         </div>

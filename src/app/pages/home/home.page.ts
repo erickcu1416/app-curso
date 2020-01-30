@@ -6,7 +6,7 @@ import { AuthService } from './../../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { MenuController } from '@ionic/angular';
+import { MenuController, PopoverController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +22,8 @@ export class HomePage implements OnInit {
               private router: Router,
               private menssagesCtrl: MessagesController,
               private _flowerService: FlowerService,
-              private menuCtrl: MenuController) {
+              private menuCtrl: MenuController,
+              public popoverController: PopoverController) {
   }
 
   slideOpts = {
@@ -53,5 +54,9 @@ export class HomePage implements OnInit {
 
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
+  }
+
+  async openProduct(ev: any) {
+
   }
 }

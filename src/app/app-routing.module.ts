@@ -12,7 +12,19 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },  {
+    path: 'cart',
+    loadChildren: () => import('./pages/cart/cart.module').then( m => m.CartPageModule)
   },
+  {
+    path: 'my-shop',
+    loadChildren: () => import('./pages/my-shop/my-shop.module').then( m => m.MyShopPageModule)
+  },
+  {
+    path: 'my-address',
+    loadChildren: () => import('./pages/my-address/my-address.module').then( m => m.MyAddressPageModule)
+  },
+
 
 ];
 

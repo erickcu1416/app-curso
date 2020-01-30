@@ -1,0 +1,55 @@
+<ion-header no-border color="primary" translucent>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-menu-button color="dark" menu="mainMenu"></ion-menu-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+  <div>
+    <ion-grid class="bg-white">
+      <ion-row>
+        <ion-col size="2">
+          <img src="/assets/icon/car2go.png" alt="" srcset="">
+        </ion-col>
+        <ion-col class="border-bottom" size="8">
+          <div class="title-card-prom">
+            Nombre de la persona de la casa
+          </div>
+          <div class="mt-large mt-card-prom">
+              Envío gratis
+          </div>
+          <div class="mt-large title-card-prom">
+            2 unidades
+          </div>
+          <br>
+        </ion-col>
+        <ion-col class="border-bottom" size="2">
+            <div (click)="showOptions()" class="ion-activatable ion-text-center">
+              <ion-text>
+                <ion-icon color="medium" class="cart-icon" name="more"></ion-icon>
+                <ion-ripple-effect></ion-ripple-effect>
+              </ion-text>
+              
+            </div>
+
+          <br>
+
+          <div class="price-card-prom">
+            $12345
+          </div>
+        </ion-col>
+
+      </ion-row>
+      <ion-row>
+        <ion-col offset="2" size="10">
+          <ion-text color="secondary">
+            Ver más productos
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>
