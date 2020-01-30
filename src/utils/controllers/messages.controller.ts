@@ -169,4 +169,38 @@ export class MessagesController {
     await actionSheet.present();
   }
 
+  async presentAlertAddProduct() {
+    return new Promise(async (resolve, reject) => {
+      const alert = await this.alertCtrl.create({
+        header: 'Ingresar Cantidad',
+        inputs: [
+          {
+            name: 'cantidad',
+            type: 'number',
+            min: 1,
+          },
+        ],
+        buttons: [
+          {
+            text: 'Cancelar',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: () => {
+              console.log('Confirm Cancel');
+              resolve(false);
+            }
+          }, {
+            text: 'Añadir al carrito',
+            handler: (data) => {
+              console.log('Confirm Ok', data.cantidad);
+              resolve(data.cantidad);
+            }
+          }
+        ]
+      });
+
+      await alert.present();
+    });
+  }
+
 }

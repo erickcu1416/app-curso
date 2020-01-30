@@ -1,3 +1,4 @@
+import { CartService } from './../../../services/cart.service';
 import { FlowerService } from './../../../services/flower.service';
 import { IFlower } from './../../../utils/models/flower.interface';
 import { MessagesController } from './../../../utils/controllers/messages.controller';
@@ -17,13 +18,15 @@ export class HomePage implements OnInit {
   user: IUser;
   loader = true;
   flowers: Observable<IFlower[]>;
+  cart: IFlower[] = [];
 
   constructor(private _authService: AuthService,
               private router: Router,
               private menssagesCtrl: MessagesController,
               private _flowerService: FlowerService,
               private menuCtrl: MenuController,
-              public popoverController: PopoverController) {
+              public popoverController: PopoverController,
+              private _cartService: CartService) {
   }
 
   slideOpts = {
@@ -33,6 +36,7 @@ export class HomePage implements OnInit {
 
   async ngOnInit() {
     this.getFlowers();
+    this.getCart();
     this.user = await this._authService.getUser();
     this.loader = false;
   }
@@ -52,11 +56,17 @@ export class HomePage implements OnInit {
     this.flowers = this._flowerService.getFlowers();
   }
 
+  getCart() {
+    this.cart = this._cartService.getCart();
+
+  }
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
   }
 
-  async openProduct(ev: any) {
-
+  async openProduct(fl: IFlower) {
+    const quanty = await this.menssagesCtrl.presentAlertAddProduct();
+    this._cartService.addFlower(fl, Number(quanty));
+    this.cart = this._cartService.getCart();
   }
 }

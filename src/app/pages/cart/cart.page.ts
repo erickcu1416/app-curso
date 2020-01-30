@@ -1,3 +1,5 @@
+import { IFlower } from './../../../utils/models/flower.interface';
+import { CartService } from './../../../services/cart.service';
 import { MessagesController } from './../../../utils/controllers/messages.controller';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartPage implements OnInit {
 
-  constructor(private messagesCtrl: MessagesController) { }
+  cart: IFlower[] = [];
+
+  constructor(private messagesCtrl: MessagesController,
+              private _cartService: CartService) { }
 
   ngOnInit() {
+    this.getCart();
+  }
+
+  getCart() {
+    this.cart = this._cartService.getCart();
   }
 
   showOptions() {
