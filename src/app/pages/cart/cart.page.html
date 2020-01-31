@@ -65,8 +65,12 @@
             </ion-row>
             <ion-row>
                 <ion-col size="8">
-                    <ion-text class="txt-envio" color="secondary">
-                        Envio a 34.98989, 45.4645121
+                    <ion-text *ngIf="!coords" class="txt-envio" color="danger">
+                        Envio no disponible
+                    </ion-text>
+
+                    <ion-text *ngIf="coords" class="txt-envio" color="secondary">
+                        Envio a {{ coords.lat }}, {{ coords.lng }}
                     </ion-text>
                 </ion-col>
                 <ion-col class="ion-text-end" size="4">
@@ -76,7 +80,7 @@
                 </ion-col>
             </ion-row>
         </ion-grid>
-        <ion-grid fixed>
+        <ion-grid *ngIf="coords" fixed>
             <ion-row class="border-bottom">
                 <ion-col size="4">
                     <h5>
@@ -93,6 +97,25 @@
                 <ion-col size="12">
                     <ion-button color="secondary" expand="block">
                         Confirmar compra
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+
+    <div class="bg-white" *ngIf="!coords">
+        <ion-grid fixed>
+            <ion-row class="border-bottom">
+                <ion-col size="12">
+                    <h5>
+                        Necesitas ir a "mi ubicación" antes de continuar con la compra
+                    </h5>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-button routerLink="/my-address" color="secondary" expand="block">
+                        Ir a Mi Ubicación
                     </ion-button>
                 </ion-col>
             </ion-row>

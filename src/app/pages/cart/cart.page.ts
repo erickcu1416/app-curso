@@ -1,3 +1,4 @@
+import { GeolocationService } from './../../../services/geolocation.service';
 import { IFlower } from './../../../utils/models/flower.interface';
 import { CartService } from './../../../services/cart.service';
 import { MessagesController } from './../../../utils/controllers/messages.controller';
@@ -12,12 +13,15 @@ export class CartPage implements OnInit {
 
   loader = true;
   flowers: any[] = [];
+  coords: any;
 
   constructor(private messagesCtrl: MessagesController,
-              private _cartService: CartService) { }
+              private _cartService: CartService,
+              private _geolocationService: GeolocationService) { }
 
   ngOnInit() {
     this.getCart();
+    this.getCoords();
   }
 
   async getCart() {
@@ -46,6 +50,12 @@ export class CartPage implements OnInit {
 
     this.loader = false;
     console.log('Flowers', this.flowers);
+  }
+
+  async getCoords() {
+    this.coords = await this._geolocationService.getCoords();
+    this.coords = JSON.parse(this.coords);
+    console.log('Coordenadas obtenidas', this.coords);
   }
 
   async showOptions(flower) {

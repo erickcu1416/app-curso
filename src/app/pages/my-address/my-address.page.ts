@@ -9,7 +9,7 @@ import mapboxgl from 'mapbox-gl';
 })
 export class MyAddressPage implements OnInit {
   map: mapboxgl.Map;
-  constructor(private _geolocationSetrivce: GeolocationService) { 
+  constructor(private _geolocationSetrivce: GeolocationService) {
     mapboxgl.accessToken = 'pk.eyJ1IjoiZXJpY2tjaGFuMTQxNiIsImEiOiJjazYxc3A0ZW4wNzF3M2RwNjFiMXJvaG8wIn0.Wg-pRKVoWRP5-jMymN6VqQ';
   }
 
