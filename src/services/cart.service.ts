@@ -19,7 +19,18 @@ export class CartService {
     });
   }
 
+  async deleteFlower(flower: any) {
+    return new Promise((resolve, reject) => {
+      while (flower.quanty > 0) {
+        flower.quanty--;
+        this.cart.splice(this.cart.findIndex(x => x.id === flower.id), 1);
+      }
+      resolve(this.cart);
+    });
+  }
+
   getCart() {
     return this.cart;
   }
+
 }

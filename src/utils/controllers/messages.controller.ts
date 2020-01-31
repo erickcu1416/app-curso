@@ -147,26 +147,30 @@ export class MessagesController {
     });
   }
 
-  async presentActionSheet() {
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Flor',
-      buttons: [{
-        text: 'Delete',
-        role: 'destructive',
-        icon: 'trash',
-        handler: () => {
-          console.log('Delete clicked');
-        }
-      }, {
-        text: 'Cancel',
-        icon: 'close',
-        role: 'cancel',
-        handler: () => {
-          console.log('Cancel clicked');
-        }
-      }]
+  async presentActionSheetDelete(flower) {
+    return new Promise(async (resolve, reject) => {
+      const actionSheet = await this.actionSheetController.create({
+        header: flower.name,
+        buttons: [{
+          text: 'Eliminar',
+          role: 'destructive',
+          icon: 'trash',
+          handler: () => {
+            resolve(true);
+          }
+        }, {
+          text: 'Cancelar',
+          icon: 'close',
+          role: 'cancel',
+          handler: () => {
+            resolve(false);
+            console.log('Cancel clicked');
+          }
+        }]
+      });
+      await actionSheet.present();
     });
-    await actionSheet.present();
+
   }
 
   async presentAlertAddProduct() {

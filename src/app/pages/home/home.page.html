@@ -51,7 +51,7 @@
                             </ion-label>
                         </ion-card-subtitle>
                     </ion-card-header>
-                    <div (click)="openProduct()" class="ion-activatable">
+                    <div class="ion-activatable">
                         <div class="bg-white">
                             <img class="main-img" src="https://www.stickpng.com/assets/images/580b585b2edbce24c47b268e.png" />
                         </div>
@@ -151,7 +151,7 @@
                     </ion-card-header>
                     <ion-card-content class="ion-no-padding bg-white">
                         <div *ngFor="let flower of flowers | async">
-                            <ion-item *ngIf="flower.category === 'bouquets'" class="border-bottom" button lines="none">
+                            <ion-item (click)="openProduct(flower)" *ngIf="flower.category === 'bouquets'" class="border-bottom" button lines="none">
                                 <ion-row>
                                     <ion-col size="4">
                                         <img class="img-card-prom" [src]="flower.urlImage" alt="">
