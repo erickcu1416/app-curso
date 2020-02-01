@@ -1,9 +1,42 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>my-shop</ion-title>
-  </ion-toolbar>
+<ion-header no-border color="primary" translucent>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button color="dark" menu="mainMenu"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Mis Compras</ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content color="light">
+    <ion-card *ngFor="let order of myOrders">
+        <ion-card-header>
+            <ion-card-subtitle>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="5">
+                            <ion-text color="secondary">
+                                ORDEN {{ order.status }}
+                            </ion-text>
+                        </ion-col>
+                        <ion-col color="success" size="7">
+                            <div class="ion-text-end">
+                                #{{ order._id }}
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-grid fixed>
+                <ion-text color="dark">
+                    La orden está esperando la aprovación del vendedor.
+                </ion-text>
+                <br>
+                <ion-text color="medium">
+                    Orden creada: {{ order.created_at.toLocaleString() }}
+                </ion-text>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
 </ion-content>

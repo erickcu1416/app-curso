@@ -1,5 +1,4 @@
 import { FlowerRepository } from './../repositories/flower.repository';
-import { IFlower } from './../utils/models/flower.interface';
 import { Injectable } from '@angular/core';
 
 @Injectable({
