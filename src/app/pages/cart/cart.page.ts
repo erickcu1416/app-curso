@@ -17,7 +17,8 @@ export class CartPage implements OnInit {
 
   constructor(private messagesCtrl: MessagesController,
               private _cartService: CartService,
-              private _geolocationService: GeolocationService) { }
+              private _geolocationService: GeolocationService,
+              private _messagesCtrl: MessagesController) { }
 
   ngOnInit() {
     this.getCart();
@@ -77,6 +78,19 @@ export class CartPage implements OnInit {
     );
 
     return price;
+  }
+
+  async tryBuy() {
+    this.messagesCtrl.presentLoader('Procesando orden...');
+    const order = await this._cartService.doBuy();
+    this.messagesCtrl.hideLoader();
+    this.messagesCtrl.presentAlertOk('Orden creada exitosamente');
+    this.flowers.length = 0;
+  }
+
+  ionViewWillEnter() {
+    this.flowers.length = 0;
+    this.getCart();
   }
 
 }

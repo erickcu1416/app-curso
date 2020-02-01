@@ -1,3 +1,6 @@
+import { IOrder } from './../utils/models/order.interface';
+import { AuthService } from './auth.service';
+import { OrderRepository } from './../repositories/orders.repository';
 import { IFlower } from './../utils/models/flower.interface';
 import { Injectable } from '@angular/core';
 
@@ -8,7 +11,8 @@ export class CartService {
 
   private cart: IFlower[] = [];
 
-  constructor() {}
+  constructor(private _orderRepository: OrderRepository,
+              private _authService: AuthService) {}
 
   async addFlower(flower: IFlower, quanty: number) {
     return new Promise((resolve, reject) => {
@@ -31,6 +35,22 @@ export class CartService {
 
   getCart() {
     return this.cart;
+  }
+
+  async doBuy() {
+    return new Promise(
+      async (resolve, reject) => {
+      const user = await this._authService.getUser();
+      const order: IOrder = {
+        _idUser: user._id.toString(),
+        flowers: this.cart,
+        created_at: new Date(),
+        status: 'ESPERA',
+        active: true,
+      };
+      const o = await this._orderRepository.addOrderFirestore(order);
+      resolve(o);
+    });
   }
 
 }
