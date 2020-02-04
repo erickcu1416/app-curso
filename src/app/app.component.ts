@@ -1,3 +1,4 @@
+import { OneSignalService } from './../services/onesignal.service';
 import { Component } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
@@ -13,7 +14,8 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private _oneSingalService: OneSignalService
   ) {
     this.initializeApp();
   }
@@ -22,8 +24,9 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.backgroundColorByHexString('#c6ac00');
       this.statusBar.styleLightContent();
-
       this.splashScreen.hide();
+
+      this._oneSingalService.loadOneSignal();
     });
   }
 }

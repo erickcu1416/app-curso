@@ -1,3 +1,5 @@
+import { OneSignalService } from './onesignal.service';
+import { GeolocationService } from './geolocation.service';
 import { IOrder } from './../utils/models/order.interface';
 import { AuthService } from './auth.service';
 import { OrderRepository } from './../repositories/orders.repository';
@@ -12,7 +14,9 @@ export class CartService {
   private cart: IFlower[] = [];
 
   constructor(private _orderRepository: OrderRepository,
-              private _authService: AuthService) {}
+              private _authService: AuthService,
+              private _geolocationService: GeolocationService,
+              private _oneSingalService: OneSignalService) {}
 
   async addFlower(flower: IFlower, quanty: number) {
     return new Promise((resolve, reject) => {
@@ -41,12 +45,18 @@ export class CartService {
     return new Promise(
       async (resolve, reject) => {
       const user = await this._authService.getUser();
+      const c:any = await this._geolocationService.getCoords();
+      const coords = JSON.parse(c);
+      const a = await this._oneSingalService.getPlayerId();
       const order: IOrder = {
         _idUser: user._id.toString(),
         flowers: this.cart,
         created_at: new Date(),
         status: 'ESPERA',
         active: true,
+        lat: coords.lat,
+        lng: coords.lng,
+        playerID: a.userId
       };
       const o = await this._orderRepository.addOrderFirestore(order);
       resolve(o);

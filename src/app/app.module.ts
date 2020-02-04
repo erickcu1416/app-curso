@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 // Plugins
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
     SplashScreen,
     Geolocation,
     NativeStorage,
+    OneSignal,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

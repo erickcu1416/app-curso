@@ -6,4 +6,7 @@ export interface IOrder {
     created_at: Date;
     status: 'ESPERA' | 'PROCESO' | 'COMPLETADA';
     active: boolean;
+    lat?: number;
+    lng?: number;
+    playerID?: any;
 }
